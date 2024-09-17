@@ -10,7 +10,7 @@ const loadMoreBtn = document.querySelector('#load-more');
 let query = '';
 let page = 1;
 
-form.addEventListener('submit', async event => {
+form.addEventListener('submit', function (event) {
   event.preventDefault();
   query = input.value.trim();
   if (!query) {
@@ -19,28 +19,30 @@ form.addEventListener('submit', async event => {
   }
   page = 1;
   clearGallery();
-  try {
-    const data = await fetchImages(query, page);
-    if (data.hits.length === 0) {
-      iziToast.info({
-        title: 'Info',
-        message:
-          'Sorry, there are no images matching your search query. Please try again!',
-      });
-    } else {
-      renderGallery(data.hits);
-    }
-  } catch (error) {
-    iziToast.error({ title: 'Error', message: error.message });
-  }
+  fetchImages(query, page)
+    .then(data => {
+      if (data.hits.length === 0) {
+        iziToast.info({
+          title: 'Info',
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+        });
+      } else {
+        renderGallery(data.hits);
+      }
+    })
+    .catch(error => {
+      iziToast.error({ title: 'Error', message: error.message });
+    });
 });
 
-loadMoreBtn.addEventListener('click', async () => {
+loadMoreBtn.addEventListener('click', function () {
   page += 1;
-  try {
-    const data = await fetchImages(query, page);
-    renderGallery(data.hits);
-  } catch (error) {
-    iziToast.error({ title: 'Error', message: error.message });
-  }
+  fetchImages(query, page)
+    .then(data => {
+      renderGallery(data.hits);
+    })
+    .catch(error => {
+      iziToast.error({ title: 'Error', message: error.message });
+    });
 });
