@@ -17,10 +17,10 @@ export function renderGallery(images) {
     <a href="${largeImageURL}" class="gallery-item">
       <img src="${webformatURL}" alt="${tags}" loading="lazy" />
       <div class="info">
-        <p><b>Likes:</b><br>${likes}</p>
-        <p><b>Views:</b><br>${views}</p>
-        <p><b>Comments:</b><br>${comments}</p>
-        <p><b>Downloads:</b><br>${downloads}</p>
+        <p><b>Likes</b><br>${likes}</p>
+        <p><b>Views</b><br>${views}</p>
+        <p><b>Comments</b><br>${comments}</p>
+        <p><b>Downloads</b><br>${downloads}</p>
       </div>
     </a>
   `
