@@ -5,7 +5,6 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-input');
-const loadMoreBtn = document.querySelector('.load-more');
 const loader = document.querySelector('.loader');
 
 let query = '';
@@ -45,26 +44,7 @@ form.addEventListener('submit', function (event) {
         });
       } else {
         renderGallery(data.hits);
-        loadMoreBtn.classList.add('visible');
       }
-    })
-    .catch(error => {
-      hideLoader();
-      iziToast.error({
-        title: 'Error',
-        message: error.message,
-        position: 'topRight',
-      });
-    });
-});
-
-loadMoreBtn.addEventListener('click', function () {
-  page += 1;
-  showLoader();
-  fetchImages(query, page)
-    .then(data => {
-      hideLoader();
-      renderGallery(data.hits);
     })
     .catch(error => {
       hideLoader();

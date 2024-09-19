@@ -29,8 +29,7 @@ body {
   padding-left: 8px;
 }
 
-.search-button,
-.load-more {
+.search-button {
   font-size: 16px;
   color: #fff;
   background-color: #4e75ff;
@@ -41,18 +40,7 @@ body {
   border: none;
 }
 
-.load-more {
-  display: none;
-}
-
-.load-more.visible {
-  display: block;
-  width: auto;
-  margin: 32px auto 0;
-}
-
-.search-button:hover,
-.load-more:hover {
+.search-button:hover {
   background-color: #6c8cff;
 }
 
