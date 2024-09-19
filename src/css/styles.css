@@ -52,6 +52,7 @@ body {
   background: #fff;
   box-sizing: border-box;
 }
+
 .loader-item::after {
   content: '';
   width: calc(100% - 30px);
